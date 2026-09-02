@@ -33,9 +33,9 @@ jobs:
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Clean npm auth config for OIDC
+        run: npm config delete //registry.npmjs.org/:_authToken 2>/dev/null || true
       - name: Publish
         if: steps.check.outputs.skip == 'false'
         working-directory: packages/react
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ""
