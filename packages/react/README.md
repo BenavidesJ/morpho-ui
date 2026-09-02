@@ -1,8 +1,6 @@
 # @morpho-ui/react
 
-Accessible React UI components built on top of React 19. Designed as a learning-first,
-progressively-frameworked component library: every component ships with WCAG-aligned
-accessibility tests (powered by axe-core), typed API, and zero runtime dependencies.
+Accessible React UI component library.
 
 ## Install
 
