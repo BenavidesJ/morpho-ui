@@ -10,9 +10,6 @@ accessibility tests (powered by axe-core), typed API, and zero runtime dependenc
 npm i @morpho-ui/react
 ```
 
-**React 19** is required — declared as a peer dependency. If your project doesn't have it
-yet: `npm i react react-dom`.
-
 ## Usage
 
 ```tsx
