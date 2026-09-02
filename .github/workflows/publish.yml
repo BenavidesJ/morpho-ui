@@ -36,4 +36,6 @@ jobs:
       - name: Publish
         if: steps.check.outputs.skip == 'false'
         working-directory: packages/react
-        run: pnpm publish --no-git-checks
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
