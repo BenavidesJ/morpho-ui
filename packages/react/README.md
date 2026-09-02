@@ -7,10 +7,11 @@ accessibility tests (powered by axe-core), typed API, and zero runtime dependenc
 ## Install
 
 ```bash
-npm i @morpho-ui/react react react-dom
+npm i @morpho-ui/react
 ```
 
-Requires **React 19** (peer dependency).
+**React 19** is required — declared as a peer dependency. If your project doesn't have it
+yet: `npm i react react-dom`.
 
 ## Usage
 

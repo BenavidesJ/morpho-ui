@@ -25,7 +25,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [],
   "author": "Jose Benavides",

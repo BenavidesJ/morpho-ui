@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - run: pnpm install --frozen-lockfile
+      - name: Detect version bump
+        id: check
+        shell: bash
+        run: |
+          version=$(node -p "require('./packages/react/package.json').version")
+          published=$(npm view @morpho-ui/react version 2>/dev/null || echo none)
+          if [ "$version" = "$published" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish
+        if: steps.check.outputs.skip == 'false'
+        working-directory: packages/react
+        run: pnpm publish --no-git-checks
